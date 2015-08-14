@@ -1,0 +1,13 @@
+This is an Ansible playbook that generates five switch configurations based upon partial switch configuration. The hostname, ip_addr, and default_gateway are unique for each switch. 
+Also uses a Jinja2 if conditional.  The if conditional will add the below SNMPv3 commands and associated ACL (i.e. if SNMPv3, then the below commands are added into the configuration file):
+
+>>>>
+access-list 5 remark *** SNMP ***
+access-list 5 permit any
+!
+snmp-server view VIEWSTD iso included
+snmp-server group READONLY v3 priv read VIEWSTD access 5
+snmp-server user pysnmp READONLY v3 auth sha auth_key priv aes 128 encrypt_key
+>>>>
+
+Lastly, has a Jinja2 for loop to establish 25 interfaces with configuration
