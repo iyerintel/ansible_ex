@@ -1,0 +1,16 @@
+---
+- name: Arista Ansible testing
+  hosts: arista
+
+  tasks:
+    - name: create vlan
+      eos_vlan: name={{ item.name }} vlanid={{ item.vlanid }}
+            eapi_username={{ eapi_username }}
+            eapi_password={{ eapi_password }}
+            eapi_hostname={{ eapi_hostname }}
+            eapi_port={{ eapi_port }}
+
+      with_items:
+        - {name: bluebarry, vlanid: 111}
+        - {name: cherry, vlanid: 222}
+        - {name: lime, vlanid: 333}
