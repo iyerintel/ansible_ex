@@ -1,3 +1,4 @@
+#This yaml file deploys VLANS with its names on the specified hosts (arista) file.
 ---
 - name: Arista Ansible testing
   hosts: arista
